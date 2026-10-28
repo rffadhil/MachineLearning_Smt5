@@ -1,0 +1,25 @@
+PANDUAN DEPLOYMENT MODEL MACHINE LEARNING (FLASK)
+
+Isi folder yang dibutuhkan:
+- testing_deploy.py
+- data.json
+- gbr_model.joblib  (gunakan file model milikmu yang sudah ada)
+
+1. Letakkan testing_deploy.py dan data.json di folder Latihan yang sama dengan gbr_model.joblib.
+2. Buka terminal VS Code di folder Latihan.
+3. Pasang Flask (jangan mengubah versi scikit-learn/joblib dulu jika model sebelumnya sudah bisa dimuat):
+   python -m pip install Flask
+4. Jalankan API:
+   python testing_deploy.py
+5. Biarkan terminal server tetap hidup. Buka terminal VS Code kedua di folder Latihan.
+6. Tes endpoint (PowerShell):
+   Invoke-RestMethod -Uri http://127.0.0.1:5000/predict -Method Post -ContentType "application/json" -InFile .\data.json
+7. Untuk melihat status API, buka http://127.0.0.1:5000/ di browser.
+8. Untuk menghentikan server, tekan Ctrl+C pada terminal server.
+
+Monitoring dasar:
+Setiap permintaan prediksi yang berhasil mencatat jumlah data dan latency (waktu proses dalam milidetik) pada terminal server.
+
+Catatan:
+Notebook yang diperiksa memiliki 77 kolom setelah encoding termasuk SalePrice, sehingga model menerima 76 fitur input. File data.json contoh ini berisi 76 nilai fitur.
+Di notebook, SalePrice ikut masuk ke StandardScaler sebelum dijadikan target (y). Karena itu, hasil prediksi model kemungkinan masih berada pada skala yang sudah distandardisasi, bukan nominal harga rumah langsung. Hal ini berasal dari proses training/preprocessing, bukan dari Flask.
