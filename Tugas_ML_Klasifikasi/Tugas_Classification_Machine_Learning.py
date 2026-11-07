@@ -165,7 +165,7 @@ def main():
             "nama": "StackSample: 10% Stack Overflow Q&A",
             "path": "./datasets/stackoverflow_tags.csv",
             "tipe": "Multilabel Classification",
-            "target": "Tags",
+            "target": "Tag",
             "narasi": "Dataset teks berisi isi pertanyaan pemrograman di Stack Overflow. Targetnya adalah 'Tags'. Karena satu pertanyaan bisa di-tag dengan 'Python' DAN 'Pandas' sekaligus, dataset ini sangat cocok untuk Multilabel Classification."
         }
     ]
